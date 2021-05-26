@@ -1,0 +1,75 @@
+@mixin button($width, $height, $bgColor, $color, $justify){
+  width: $width;
+  height: $height;
+  background-color: $bgColor;
+  color: $color;
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  border: none;
+  border-radius: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0 12px 0 8px;
+  font-family: 'Spartan', sans-serif;
+  font-size: 11px;
+}
+.buttonIcon{
+  @include button(130px, 40px, var(--violet), var(--lightBg), space-between);
+  &:hover{
+    background-color: var(--lightViolet);
+  }
+  .add{
+    background-color: var(--lightBg);
+    color: var(--violet);
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.button{
+  @include button(120px, 40px, var(--violet), var(--lightBg), center);
+  &:hover{
+    background-color: var(--lightViolet);
+  }
+  &--editLight{
+    @include button(60px, 40px, var(--lightBg), var(--darkAzure), center);
+    &:hover{
+      background-color: var(--lightAzure);
+    }
+  }
+  &--editDark{
+    @include button(60px, 40px, var(--darkBlue), var(--lightBg), center);
+    &:hover{
+      background-color: var(--lightBg);
+      color: var(--darkAzure);
+    }
+  }
+  &--saveLight{
+    @include button(120px, 40px, var(--bluNight), var(--darkAzure), center);
+    &:hover{
+      background-color: var(--black);
+    }
+  }
+  &--saveDark{
+    @include button(120px, 40px, var(--bluNight), var(--lightAzure), center);
+    &:hover{
+      background-color: var(--darkBlue);
+    }
+  }
+  &--delete{
+    @include button(80px, 40px, var(--red), var(--lightBg), center);
+    &:hover{
+      background-color: var(--lightRed);
+    }
+  }
+  &--newItem{
+    @include button(300px, 40px, var(--lightBg), var(--darkAzure), center);
+    &:hover{
+      background-color: var(--lightAzure);
+    }
+  }
+}

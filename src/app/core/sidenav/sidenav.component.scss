@@ -1,0 +1,62 @@
+.sidenav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 100vh;
+  background-color: var(--bluNight);
+  border-radius: 0 25px 25px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+  z-index: 1;
+  &__contLogo{
+    background-color: var(--violet);
+    width: 100%;
+    height: 90px;
+    border-radius: 0 0 25px 0;
+    overflow-x: hidden;
+    position: relative;
+    &__bottom{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-color: var(--lightViolet);
+      border-radius: 25px 0 0 0;
+    }
+    &__logo{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 35px;
+    }
+  }
+  &__profile-darkMode{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__dark{
+      padding-bottom: 20px;
+    }
+    &__profile{
+      border-top: 1px solid var(--darkAzure);
+      width: 90px;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      img{
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
+}

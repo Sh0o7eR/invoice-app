@@ -1,0 +1,25 @@
+@import "src/assets/styles/button";
+.containerHome{
+  max-width: 700px;
+  margin: 50px auto 0;
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    &__title{
+
+    }
+    &__button{
+      display: flex;
+      align-items: center;
+      &__filter{
+      }
+    }
+  }
+  &__body{
+    margin-top: 50px;
+  }
+}
+:host ::ng-deep .mat-form-field-wrapper{
+  margin-bottom: -20px;
+  margin-right: 40px;
+}
