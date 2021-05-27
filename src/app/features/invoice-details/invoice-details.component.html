@@ -1,0 +1,96 @@
+<div class="container-details">
+  <div class="container-details__top" style="display: flex; align-items: center" routerLink="/">
+    <mat-icon style="margin-right: 10px; color: var(--violet); font-weight: 800;">keyboard_arrow_left</mat-icon><p>Go back</p>
+  </div>
+  <div class="container-details__header">
+    <div class="container-details__header__status">
+      <p>Status</p>
+      <div [ngStyle]="{backgroundColor: invoiceDetail.status === 'paid' ? 'rgba(51,214,159,0.1)'
+      : invoiceDetail.status === 'draft' ? 'rgba(0, 0, 0, 0.1)' : invoiceDetail.status === 'pending' ? 'rgba(255,143,0,0.1)'
+      : null,
+        color: invoiceDetail.status === 'paid' ? '#33D69F'
+        : invoiceDetail.status === 'draft' ? 'rgba(0, 0, 0, 1)'
+        : invoiceDetail.status === 'pending' ? '#FF8F00' : null}"
+           class="status">
+        <div class="point"
+             [ngStyle]="{backgroundColor: invoiceDetail.status === 'paid' ? 'rgba(51,214,159,1)'
+             : invoiceDetail.status === 'draft' ? 'rgba(0, 0, 0, 1)'
+             : invoiceDetail.status === 'pending' ? 'rgba(255,143,0,1)' : null}"
+        ></div>
+        {{invoiceDetail.status}}
+      </div>
+    </div>
+    <div class="container-details__header__edit">
+      <button class="button--editLight">Edit</button>
+      <button class="button--delete">Delete</button>
+      <button class="button">Mark ad Paid</button>
+    </div>
+  </div>
+  <div class="container-details__body">
+    <div class="container-details__body__header">
+      <div class="container-details__body__header__top">
+        <div class="container-details__body__header__top__left">
+          <p>#<b>{{invoiceDetail.id}}</b></p>
+          <p>{{invoiceDetail.description}}</p>
+        </div>
+        <div class="container-details__body__header__top__right">
+          <ul>
+            <li>{{invoiceDetail.senderAddress.street}}</li>
+            <li>{{invoiceDetail.senderAddress.city}}</li>
+            <li>{{invoiceDetail.senderAddress.postCode}}</li>
+            <li>{{invoiceDetail.senderAddress.country}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-details__body__header__center">
+        <div class="container-details__body__header__center__left">
+          <div class="container-details__body__header__center__left__top">
+            <p>Invoice Date</p>
+            <p><b>{{invoiceDetail.createdAt}}</b></p>
+          </div>
+          <div class="container-details__body__header__center__left__bottom">
+            <p>Payment Due</p>
+            <p><b>{{invoiceDetail.paymentDue}}</b></p>
+          </div>
+        </div>
+        <div class="container-details__body__header__center__center">
+          <p>Bill To</p>
+          <p class="nameClient"><b>{{invoiceDetail.clientName}}</b></p>
+          <ul>
+            <li>{{invoiceDetail.clientAddress.street}}</li>
+            <li>{{invoiceDetail.clientAddress.city}}</li>
+            <li>{{invoiceDetail.clientAddress.postCode}}</li>
+            <li>{{invoiceDetail.clientAddress.country}}</li>
+          </ul>
+        </div>
+        <div class="container-details__body__header__center__right">
+          <p>Sent to</p>
+          <p><b>{{invoiceDetail.clientEmail}}</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="container-details__body__body">
+      <div class="container-details__body__body__rowTitle">
+        <ul>
+          <li>Item Name</li>
+          <li>QTY.</li>
+          <li style="text-align: right">Price</li>
+          <li style="text-align: right">Total</li>
+        </ul>
+      </div>
+      <div class="container-details__body__body__rowItem"
+      *ngFor="let item of invoiceDetail.items">
+        <ul>
+          <li><b>{{item.name}}</b></li>
+          <li style="font-weight: bold;">{{item.quantity}}</li>
+          <li style="font-weight: bold; text-align: right">$ {{item.price}}</li>
+          <li style="text-align: right"><b>$ {{item.total}}</b></li>
+        </ul>
+      </div>
+      <div class="container-details__body__body__total">
+        <p>Amount Due</p>
+        <p>$ {{invoiceDetail.total}}</p>
+      </div>
+    </div>
+  </div>
+</div>

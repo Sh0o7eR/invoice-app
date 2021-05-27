@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Client} from "../../model";
-import {Observable} from "rxjs";
 import {FattureService} from "../../services/fatture.service";
 
 @Component({
@@ -19,12 +18,6 @@ export class HomepageComponent implements OnInit {
   constructor(private http: HttpClient, private fattureService: FattureService) { }
 
   ngOnInit(): void {
-     // this.http.get<Client[]>('assets/data.json')
-     //  .subscribe(data => {
-     //    this.listDataJson = data;
-     //    console.log(this.listDataJson)
-     //  });
-     // this.addPerson(this.p);
     this.refreshPeople();
     // this.createFattura();
   }
@@ -32,7 +25,6 @@ export class HomepageComponent implements OnInit {
   refreshPeople() {
     this.fattureService.getFatture()
       .subscribe(data => {
-        console.log(data)
         this.listDataJson = data;
       })
   }
@@ -41,9 +33,8 @@ export class HomepageComponent implements OnInit {
     this.fattureService.createFattura(client)
       .subscribe(data => {
         return this.listDataJson.push(data);
-        console.log(data)
-        this.refreshPeople();
       })
+        this.refreshPeople();
   }
 
 }

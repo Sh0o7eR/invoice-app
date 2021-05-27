@@ -11,6 +11,7 @@ export class CardComponent implements OnInit {
  @Input() name = '';
  @Input() import = 0;
  @Input() status = '';
+ @Input() router = '';
 
   constructor() { }
 

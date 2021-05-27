@@ -2,7 +2,7 @@
   <div class="containerHome__header">
     <div class="containerHome__header__title">
       <h1>Invoices</h1>
-      <p>There are 7 total invoices</p>
+      <p>There are {{listDataJson.length}} total invoices</p>
     </div>
     <div class="containerHome__header__button">
       <div class="containerHome__header__button__filter">
@@ -26,6 +26,7 @@
       [name]="item.clientName"
       [import]="item.total"
       [status]="item.status"
+      [router]="item.id"
     ></inv-card>
     <div class="containerHome__body__empty" *ngIf="listDataJson.length === 0">
       <img src="assets/image/illustration-empty.svg" alt="image-empty">

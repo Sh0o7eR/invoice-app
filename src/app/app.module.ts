@@ -10,6 +10,7 @@ import { HomepageComponent } from './features/homepage/homepage.component';
 import { CardComponent } from './shared/card/card.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { InvoiceDetailsComponent } from './features/invoice-details/invoice-details.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     SidenavComponent,
     HomepageComponent,
-    CardComponent
+    CardComponent,
+    InvoiceDetailsComponent
   ],
   imports: [
     BrowserModule,

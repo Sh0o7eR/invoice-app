@@ -32,15 +32,15 @@ export class FattureService {
       );
   }
 
-  getFatturaId(id: string): Observable<Client[]>{
-    return this.http.get<Client[]>(this.baseURL + '/listaFatture' + id)
+  getFatturaId(id: string | null): Observable<Client[]>{
+    return this.http.get<Client[]>(this.baseURL + '/listaFatture/' + id)
       .pipe(
         retry(1),
         catchError(this.httpError)
       );
   }
 
-  createFattura(client: any): Observable<any> {
+  createFattura(client: Client): Observable<any> {
     return this.http
       .post<Client>(this.baseURL + '/listaFatture', JSON.stringify(client), this.httpHeader)
   }
