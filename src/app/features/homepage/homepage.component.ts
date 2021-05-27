@@ -3,6 +3,7 @@ import {FormControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Client} from "../../model";
 import {Observable} from "rxjs";
+import {FattureService} from "../../services/fatture.service";
 
 @Component({
   selector: 'inv-homepage',
@@ -15,46 +16,34 @@ export class HomepageComponent implements OnInit {
   statusList: string[] = ['Draft', 'Pending', 'Paid'];
 
   listDataJson: Client[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private fattureService: FattureService) { }
 
   ngOnInit(): void {
-     this.http.get<Client[]>('assets/data.json')
-      .subscribe(data => {
-        this.listDataJson = data;
-      });
-     // this.http.post<Client[]>('assets/data.json',
-     //   {
-     //     id: "nuovo",
-     //     createdAt: "2021-08-18",
-     //     clientName: "Manuel",
-     //     total: 10000,
-     //     status: "paid",
-     //   })
-     //   .subscribe(val => {
-     //       console.log("POST call successful value returned in body",
-     //         val);
-     //     },
-     //       response => {
-     //         console.log("POST call in error", response);
-     //       },
-     //       () => {
-     //         console.log("The POST observable is now completed.");
-     //       });
-this.createArticle()
-       }
-
-  createArticle(): Observable<Client[]> {
-    return this.http.post<Client[]>('assets/data.json',
-      {
-        id: "nuovo",
-        createdAt: "2021-08-18",
-        clientName: "Manuel",
-        total: 10000,
-        status: "paid",
-      }
-    );
+     // this.http.get<Client[]>('assets/data.json')
+     //  .subscribe(data => {
+     //    this.listDataJson = data;
+     //    console.log(this.listDataJson)
+     //  });
+     // this.addPerson(this.p);
+    this.refreshPeople();
+    // this.createFattura();
   }
 
+  refreshPeople() {
+    this.fattureService.getFatture()
+      .subscribe(data => {
+        console.log(data)
+        this.listDataJson = data;
+      })
+  }
 
+  createFattura(client: Client){
+    this.fattureService.createFattura(client)
+      .subscribe(data => {
+        return this.listDataJson.push(data);
+        console.log(data)
+        this.refreshPeople();
+      })
+  }
 
 }

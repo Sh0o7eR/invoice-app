@@ -17,6 +17,10 @@
   }
   &__body{
     margin-top: 50px;
+    &__empty{
+      width: 250px;
+      margin: 200px auto 0;
+    }
   }
 }
 :host ::ng-deep .mat-form-field-wrapper{
