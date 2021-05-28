@@ -8,9 +8,10 @@ import {MaterialModule} from "./material-module";
 import { SidenavComponent } from './core/sidenav/sidenav.component';
 import { HomepageComponent } from './features/homepage/homepage.component';
 import { CardComponent } from './shared/card/card.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { InvoiceDetailsComponent } from './features/invoice-details/invoice-details.component';
+import { FormComponent } from './shared/form/form.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { InvoiceDetailsComponent } from './features/invoice-details/invoice-deta
     SidenavComponent,
     HomepageComponent,
     CardComponent,
-    InvoiceDetailsComponent
+    InvoiceDetailsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { InvoiceDetailsComponent } from './features/invoice-details/invoice-deta
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

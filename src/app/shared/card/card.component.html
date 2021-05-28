@@ -3,7 +3,7 @@
     <li><span class="colorText">#</span><b>{{barCode}}</b></li>
     <li style="width: 30%" class="colorText">{{date}}</li>
     <li style="justify-content: flex-start" class="colorText">{{name}}</li>
-    <li style="justify-content: flex-end; width: 15%; margin-right: 15px;"><b>$ {{import}}</b></li>
+    <li style="justify-content: flex-end; width: 15%; padding-right: 15px;"><b>$ {{import}}</b></li>
     <li>
       <div [ngStyle]="{backgroundColor: status === 'paid' ? 'rgba(51,214,159,0.1)' : status === 'draft' ? 'rgba(0, 0, 0, 0.1)' : status === 'pending' ? 'rgba(255,143,0,0.1)' : null,
         color: status === 'paid' ? '#33D69F' : status === 'draft' ? 'rgba(0, 0, 0, 1)' : status === 'pending' ? '#FF8F00' : null}"

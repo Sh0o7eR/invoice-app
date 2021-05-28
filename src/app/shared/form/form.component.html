@@ -1,0 +1,165 @@
+<div class="container-form">
+  <div class="container-form__title">
+    <h2 *ngIf="false; else invoice">Edit </h2>
+    <ng-template #invoice><h2>New Invoice</h2></ng-template>
+  </div>
+  <div class="container-form__body">
+    <form [formGroup]="profileForm" (ngSubmit)="saveDraft()" #f ngForm>
+      <div class="container-form__body__billForm">
+        <h5>Bill Form</h5>
+        <div class="singleForm">
+          <label for="street">Street Address</label>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" id="street" name="street">
+          </mat-form-field>
+        </div>
+        <div class="tripleForm">
+          <div class="singleForm">
+            <label for="city">City</label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="city" name="city">
+            </mat-form-field>
+          </div>
+          <div class="singleForm">
+              <label for="postCode">Post Code</label>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" id="postCode" name="postCode">
+              </mat-form-field>
+            </div>
+          <div class="singleForm">
+              <label for="country">Country</label>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" id="country" name="country">
+              </mat-form-field>
+            </div>
+          </div>
+      </div>
+      <div class="container-form__body__billTo">
+        <h5>Bill To</h5>
+        <div class="singleForm">
+          <label for="clientName">Client's Name</label>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" id="clientName" name="clientName"
+                   formControlName="name" required minlength="2">
+          </mat-form-field>
+        </div>
+        <div class="singleForm">
+          <label for="clientEmail">Client's Email</label>
+          <mat-form-field appearance="outline">
+            <input matInput type="email" id="clientEmail" name="clientEmail"
+                   formControlName="email" required>
+          </mat-form-field>
+        </div>
+        <div class="singleForm">
+          <label for="streetClient">Street Address</label>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" id="streetClient" name="streetClient"
+                   formControlName="street" required minlength="2">
+          </mat-form-field>
+        </div>
+        <div class="tripleForm">
+          <div class="singleForm">
+            <label for="cityClient">City</label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="cityClient" name="cityClient"
+              formControlName="street" required minlength="2">
+            </mat-form-field>
+          </div>
+          <div class="singleForm">
+            <label for="postCodeClient">Post Code</label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="postCodeClient" name="postCodeClient"
+              formControlName="street" required minlength="2">
+            </mat-form-field>
+          </div>
+          <div class="singleForm">
+            <label for="countryClient">Country</label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="countryClient" name="countryClient"
+              formControlName="street" required minlength="2">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="doubleForm" style="margin-top: 20px;">
+          <div class="singleForm">
+            <label for="invoiceDate">Invoice Date</label>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="picker" id="invoiceDate" name="invoiceDate">
+              <mat-datepicker-toggle matSuffix [for]="picker" style="color: var(--violet)"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="singleForm">
+            <label>Payment Terms</label>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" name="food">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="singleForm">
+          <label for="description">Project Description</label>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" id="description" name="description"
+                   formControlName="text" required minlength="2">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="container-form__body__itemList">
+        <h2>Item List</h2>
+        <div class="fifthForm">
+          <div class="fifthForm__name">
+            <label>Item Name</label>
+          </div>
+          <div class="fifthForm__qty">
+            <label>Qty.</label>
+          </div>
+          <div class="fifthForm__price">
+            <label>Price</label>
+          </div>
+          <div class="fifthForm__total">
+            <label>Total</label>
+          </div>
+          <div class="fifthForm__icon"></div>
+        </div>
+        <div class="fifthForm" *ngFor="let item of newItemElementHTML; let idx = index">
+          <div class="fifthForm__name">
+            <mat-form-field appearance="outline">
+            <input matInput type="text">
+            </mat-form-field>
+          </div>
+          <div class="fifthForm__qty">
+            <mat-form-field appearance="outline">
+            <input matInput type="text" #quantity>
+            </mat-form-field>
+          </div>
+          <div class="fifthForm__price">
+            <mat-form-field appearance="outline">
+            <input matInput type="text" #price>
+            </mat-form-field>
+          </div>
+          <div class="fifthForm__total">
+            <b>{{+quantity.value * +price.value}}</b>
+          </div>
+          <div class="fifthForm__icon">
+            <mat-icon style="color: #777F98; cursor: pointer" (click)="deleteItem(idx)">delete</mat-icon>
+          </div>
+        </div>
+        <button class="button--newItem" style="width: 100%; margin: 10px 0;" (click)="addNewItem()">+ Add New Item</button>
+      </div>
+      <div class="container-form__body__itemButton">
+        <button class="button--editLight"
+                (click)="f.reset()"
+                style="padding: 20px 40px"
+        >Discard</button>
+        <div class="groupBtn">
+          <button class="button--saveDark" style="margin-right: 10px;">Save as Draft</button>
+          <button class="button">Save & Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
