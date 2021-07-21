@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development json-server
 
-npm i json-serve and add in package.json -> scripts -> "mock:server": "json-server --watch backend/database.json". Run npm run mock:server
+Install `npm i json-serve` and add in `package.json -> scripts -> "mock:server": "json-server --watch backend/database.json"`. Run `npm run mock:server`
 
 ## Development server
 
